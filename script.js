@@ -161,13 +161,49 @@ async function visualizeSingle(sequence, algorithm) {
       }]
     },
     options: {
-      responsive: true,
-      animation: false,
-      scales: {
-        y: { title: { display: true, text: 'Cylinder Number' } },
-        x: { title: { display: true, text: 'Sequence Order' } }
+  responsive: true,
+  animation: false,
+  scales: {
+    y: {
+      title: {
+        display: true,
+        text: 'Cylinder Number',
+        font: {
+          size: 14
+        }
+      },
+      ticks: {
+        font: {
+          size: 12
+        }
+      }
+    },
+    x: {
+      title: {
+        display: true,
+        text: 'Sequence Order',
+        font: {
+          size: 14
+        }
+      },
+      ticks: {
+        font: {
+          size: 12
+        }
       }
     }
+  },
+  plugins: {
+    legend: {
+      labels: {
+        font: {
+          size: 14
+        }
+      }
+    }
+  }
+}
+
   });
 
   for (let i = 0; i < sequence.length; i++) {

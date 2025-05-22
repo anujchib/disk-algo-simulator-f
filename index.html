@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <title>Disk Scheduling Visualizer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -20,47 +20,49 @@
 
     .chart-container {
       position: relative;
-      height: 500px;
       width: 100%;
+      height: 60vh;
+      min-height: 300px;
+      max-height: 600px;
     }
-    
+
     #comparison-results {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s ease-out;
     }
-    
+
     #comparison-results.active {
-      max-height: 500px;
+      max-height: 1000px;
     }
   </style>
 </head>
 <body class="min-h-screen p-6 flex flex-col items-center justify-start">
 
-  <div class="w-full max-w-5xl bg-white bg-opacity-10 rounded-xl shadow-lg p-8">
-    <h1 class="text-4xl font-bold text-center mb-8 text-blue-100">Disk Scheduling Visualizer</h1>
+  <div class="w-full max-w-5xl bg-white bg-opacity-10 rounded-xl shadow-lg p-6 sm:p-8">
+    <h1 class="text-3xl sm:text-4xl font-bold text-center mb-6 text-blue-100">Disk Scheduling Visualizer</h1>
 
-    <form id="scheduler-form" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-black">
+    <form id="scheduler-form" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 text-black">
       <div>
-        <label class="block font-semibold text-white mb-1">Request Sequence (comma separated):</label>
+        <label for="requests" class="block font-semibold text-white mb-1">Request Sequence (comma separated):</label>
         <input type="text" id="requests" placeholder="e.g. 82,170,43,140,24"
                class="w-full p-2 rounded-lg border border-gray-300" required />
       </div>
 
       <div>
-        <label class="block font-semibold text-white mb-1">Head Position:</label>
+        <label for="head" class="block font-semibold text-white mb-1">Head Position:</label>
         <input type="number" id="head"
                class="w-full p-2 rounded-lg border border-gray-300" required />
       </div>
 
       <div>
-        <label class="block font-semibold text-white mb-1">Number of Cylinders:</label>
+        <label for="cylinders" class="block font-semibold text-white mb-1">Number of Cylinders:</label>
         <input type="number" id="cylinders"
                class="w-full p-2 rounded-lg border border-gray-300" required />
       </div>
 
       <div>
-        <label class="block font-semibold text-white mb-1">Algorithm:</label>
+        <label for="algorithm" class="block font-semibold text-white mb-1">Algorithm:</label>
         <select id="algorithm"
                 class="w-full p-2 rounded-lg border border-gray-300">
           <option value="FCFS">FCFS</option>
@@ -73,7 +75,7 @@
       </div>
 
       <div id="direction-container">
-        <label id="direction-label" class="block font-semibold text-white mb-1">Direction:</label>
+        <label for="direction" class="block font-semibold text-white mb-1">Direction:</label>
         <select id="direction"
                 class="w-full p-2 rounded-lg border border-gray-300">
           <option value="left">Left</option>
@@ -81,7 +83,7 @@
         </select>
       </div>
 
-      <div class="col-span-2 flex justify-center gap-4 mt-4">
+      <div class="col-span-1 md:col-span-2 flex justify-center gap-4 mt-4">
         <button type="submit" id="visualize-btn"
                 class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold transition">
           Visualize
@@ -104,15 +106,12 @@
         </div>
       </div>
 
-      <div class="chart-container bg-white rounded-xl p-6 shadow-lg">
+      <div class="chart-container bg-white rounded-xl p-4 shadow-lg">
         <canvas id="seek-chart"></canvas>
       </div>
-      
     </div>
   </div>
 
-  <!-- Link to your JavaScript -->
-   <script src="script.js"></script>
-  
+  <script src="script.js"></script>
 </body>
 </html>
