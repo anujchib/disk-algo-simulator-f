@@ -1,4 +1,4 @@
-const BASE_URL = 'https://disk-algo-simulator-b-production.up.railway.app'; // <- CHANGE THIS!
+const BASE_URL = 'https://disk-scheduler-7f3f3bd52476.herokuapp.com/'; // <- CHANGE THIS!
 
 const form = document.getElementById('scheduler-form');
 const chartCanvas = document.getElementById('seek-chart');
